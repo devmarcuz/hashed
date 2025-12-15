@@ -10,4 +10,54 @@
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero-section section .content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.hero-section section .content h2 {
+  font-family: "Almarena Neue", sans-serif;
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 53px;
+  text-align: center;
+  letter-spacing: -0.05em;
+}
+.hero-section section .content h2 span {
+  font-style: italic;
+}
+.hero-section section .content p {
+  font-family: "Almarena Neue", sans-serif;
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 53px;
+  text-align: center;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+}
+.hero-section section .bottom-arts {
+  display: flex;
+  gap: 32px;
+  position: relative;
+  bottom: -45px;
+}
+.hero-section section .bottom-arts img {
+  cursor: pointer;
+  transition: 0.2s all ease-in-out;
+}
+.hero-section section .bottom-arts img:nth-child(1):hover {
+  transform: scale(1.2) rotate(10deg);
+}
+.hero-section section .bottom-arts img:nth-child(2):hover {
+  transform: scale(1.2) rotate(-25deg);
+}
+.hero-section section .bottom-arts img:nth-child(3):hover {
+  transform: scale(1.2) rotate(10deg);
 }/*# sourceMappingURL=HeroSection.css.map */

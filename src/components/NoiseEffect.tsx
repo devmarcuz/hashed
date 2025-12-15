@@ -11,7 +11,6 @@ const NoiseEffect = () => {
       height={982}
       priority
       loading="eager"
-      quality={100}
     />
   );
 };

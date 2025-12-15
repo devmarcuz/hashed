@@ -7,14 +7,14 @@
 }
 
 @font-face {
-  font-family: "Almarena Neue DS";
+  font-family: "Almarena Neue";
   src: url("../assets/fonts/almarenaneue-ds-regular-italic.otf")
     format("opentype");
   font-weight: 400;
   font-style: italic;
 }
 @font-face {
-  font-family: "Almarena Neue DS";
+  font-family: "Almarena Neue";
   src: url("../assets/fonts/almarenaneue-regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
@@ -98,4 +98,5 @@
 body {
   font-family: "General Sans", sans-serif;
   background: #ffffff;
+  color: #090909;
 }
