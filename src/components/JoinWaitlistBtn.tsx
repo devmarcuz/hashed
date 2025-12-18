@@ -1,9 +1,16 @@
+import { useModalContext } from "@/contexts/ModalContext";
 import "@/styles/JoinWaitlistBtn.css";
 
-const JoinWaitlistBtn = () => {
+type JoinBtnProps = {
+  className?: string;
+};
+
+const JoinWaitlistBtn = ({ className = "" }: JoinBtnProps) => {
+  const { openModal } = useModalContext();
+
   return (
-    <div className="joinwaitlist-btn-wrapper">
-      <div className="joinwaitlist-btn">
+    <div className="joinwaitlist-btn-wrapper" onClick={openModal}>
+      <div className={`${className} joinwaitlist-btn`}>
         <p>Join waitlist</p>
         <svg
           width="13"

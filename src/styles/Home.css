@@ -1,3 +1,8 @@
 .home-page {
   width: 100%;
+}
+.home-page .main-containers {
+  position: relative;
+  z-index: 10;
+  margin-top: 100vh;
 }/*# sourceMappingURL=Home.css.map */

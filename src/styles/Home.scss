@@ -1,3 +1,9 @@
 .home-page {
   width: 100%;
+
+  .main-containers {
+    position: relative;
+    z-index: 10;
+    margin-top: 100vh;
+  }
 }

@@ -8,8 +8,9 @@
   -o-object-fit: cover;
      object-fit: cover;
   mix-blend-mode: multiply;
-  opacity: 0.1;
+  opacity: 0.2;
   pointer-events: none;
+  z-index: 2;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;

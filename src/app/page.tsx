@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, createContext, useContext } from "react";
 import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,6 +9,12 @@ import "@/styles/Home.css";
 import PageLoad from "@/components/PageLoad";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
+import MainSection from "@/components/Main";
+import SparkSection from "@/components/SparkSection";
+import BuildingConnection from "@/components/BuildingConnection";
+import Footer from "@/components/Footer";
+import JoinWaitlistFormModal from "@/components/JoinWaitlistFormModal";
+import { ModalProvider } from "@/contexts/ModalContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,9 +25,25 @@ declare global {
   }
 }
 
+// Create context for active section
+type SectionType = "hero" | "main" | "spark" | "building" | "footer";
+
+interface SectionContextType {
+  activeSection: SectionType;
+  setActiveSection: (section: SectionType) => void;
+}
+
+export const SectionContext = createContext<SectionContextType>({
+  activeSection: "hero",
+  setActiveSection: () => {},
+});
+
+export const useSectionContext = () => useContext(SectionContext);
+
 export default function Home() {
   const lenisRef = useRef<Lenis | null>(null);
   const [showLoader, setShowLoader] = useState<boolean>(true);
+  const [activeSection, setActiveSection] = useState<SectionType>("hero");
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -93,14 +115,25 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="home-page">
-      {showLoader && <PageLoad onDone={() => setShowLoader(false)} />}
-      {!showLoader && (
-        <main>
-          <Header />
-          <HeroSection />
-        </main>
-      )}
-    </div>
+    <ModalProvider>
+      <SectionContext.Provider value={{ activeSection, setActiveSection }}>
+        <div className="home-page">
+          {showLoader && <PageLoad onDone={() => setShowLoader(false)} />}
+          <JoinWaitlistFormModal />
+          {!showLoader && (
+            <main className="scroll-container">
+              <Header />
+              <HeroSection />
+              <div className="main-containers">
+                <MainSection />
+                <SparkSection />
+                <BuildingConnection />
+                <Footer />
+              </div>
+            </main>
+          )}
+        </div>
+      </SectionContext.Provider>
+    </ModalProvider>
   );
 }

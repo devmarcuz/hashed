@@ -49,6 +49,10 @@
   border-radius: 12px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
+  &.background-red {
+    background-image: url("../assets/svgs/red_btn.svg");
+  }
+
   p {
     font-weight: 500;
     font-size: 16px;

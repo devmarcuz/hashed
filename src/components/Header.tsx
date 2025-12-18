@@ -5,8 +5,21 @@ import Image from "next/image";
 import JoinWaitlistBtn from "./JoinWaitlistBtn";
 import "@/styles/Header.css";
 import Link from "next/link";
+import { useSectionContext } from "@/app/page";
+
+// Map sections to logo paths
+const logoMap: Record<string, string> = {
+  hero: "/svgs/logo-frame-1.svg",
+  main: "/svgs/logo-frame-2.svg", // You can change these paths
+  spark: "/svgs/logo-frame-3.svg",
+  building: "/svgs/logo-frame-1.svg",
+  footer: "/svgs/logo-frame-1.svg",
+};
 
 const Header = () => {
+  const { activeSection } = useSectionContext();
+  const logoSrc = logoMap[activeSection] || logoMap.hero;
+
   return (
     <div className="header">
       <div className="header-wrap">
@@ -20,12 +33,25 @@ const Header = () => {
               delay: 0.3,
             }}
           >
-            <Image
-              src="/svgs/logo-frame-1.svg"
-              alt=""
-              width={126}
-              height={56}
-            />
+            <motion.div
+              key={logoSrc}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{
+                duration: 0.3,
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
+            >
+              <Image
+                src={logoSrc}
+                alt=""
+                width={126}
+                height={56}
+                priority
+                loading="eager"
+              />
+            </motion.div>
           </motion.div>
         </Link>
 

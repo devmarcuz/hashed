@@ -1,0 +1,111 @@
+.main-section {
+  width: 100%;
+  min-height: 100vh;
+  overflow: visible;
+  background: #ffc928;
+  position: relative;
+  z-index: 1;
+
+  section {
+    margin: 0 auto;
+    padding-top: 300px;
+
+    .txt {
+      max-width: 584px;
+
+      p {
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 30px;
+        letter-spacing: -0.02em;
+      }
+    }
+
+    .first-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      gap: 150px;
+
+      .top-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 32px;
+      }
+    }
+
+    .second-content {
+      width: 100%;
+      margin-top: -450px;
+
+      .top-contain {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+
+        .match-img-section {
+          width: 584px;
+          margin: 0 auto;
+
+          .match-img-contain {
+            width: 225px;
+            height: 405px;
+            position: relative;
+
+            .match-img {
+              width: 105%;
+              height: 105%;
+              object-fit: cover;
+            }
+
+            .match-img-txt {
+              position: absolute;
+              right: -15px;
+              bottom: 30px;
+            }
+          }
+        }
+
+        .content-path {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          gap: 24px;
+          width: 100%;
+          margin-top: 15px;
+
+          .img-road {
+            width: 100%;
+
+            .road-path {
+              width: 100%;
+              height: 40px;
+              object-fit: cover;
+              object-position: center;
+            }
+          }
+
+          .txt-container {
+            max-width: 584px;
+            position: relative;
+
+            .svg {
+              position: absolute;
+              top: -110px;
+              right: -180px;
+              width: 150px;
+              height: 150px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
