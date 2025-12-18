@@ -95,4 +95,290 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+@media (max-width: 575px) {
+  .main-section section {
+    margin: 0 auto;
+    padding-top: 200px;
+    overflow: hidden;
+  }
+  .main-section section .txt {
+    max-width: 100%;
+    padding: 0 32px;
+  }
+  .main-section section .txt p {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.02em;
+  }
+  .main-section section .first-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 150px;
+  }
+  .main-section section .first-content .top-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+  }
+  .main-section section .second-content {
+    width: 100%;
+    margin-top: -450px;
+  }
+  .main-section section .second-content .top-contain {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .main-section section .second-content .top-contain .match-img-section {
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 24px;
+  }
+  .main-section section .second-content .top-contain .match-img-section .match-img-contain {
+    width: 202.5px;
+    height: 364.5px;
+    position: relative;
+  }
+  .main-section section .second-content .top-contain .match-img-section .match-img-contain .match-img {
+    width: 105%;
+    height: 105%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .main-section section .second-content .top-contain .match-img-section .match-img-contain .match-img-txt {
+    position: absolute;
+    right: -15px;
+    bottom: 30px;
+  }
+  .main-section section .second-content .top-contain .content-path {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    margin-top: 15px;
+  }
+  .main-section section .second-content .top-contain .content-path .img-road {
+    width: 100%;
+  }
+  .main-section section .second-content .top-contain .content-path .img-road .road-path {
+    width: 100%;
+    height: 40px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center;
+       object-position: center;
+  }
+  .main-section section .second-content .top-contain .content-path .txt-container {
+    max-width: 584px;
+    position: relative;
+  }
+  .main-section section .second-content .top-contain .content-path .txt-container .svg {
+    position: absolute;
+    top: -80px;
+    right: 50px;
+    width: 70px;
+    height: 70px;
+  }
+  .main-section section .second-content .top-contain .content-path .txt-container .svg svg {
+    width: 95%;
+    height: 95%;
+  }
+}
+@media (min-width: 576px) and (max-width: 769px) {
+  .main-section section {
+    margin: 0 auto;
+    padding-top: 200px;
+    overflow: hidden;
+  }
+  .main-section section .txt {
+    max-width: 584px;
+  }
+  .main-section section .txt p {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 30px;
+    letter-spacing: -0.02em;
+  }
+  .main-section section .first-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 150px;
+  }
+  .main-section section .first-content .top-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+  }
+  .main-section section .second-content {
+    width: 100%;
+    margin-top: -450px;
+  }
+  .main-section section .second-content .top-contain {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .main-section section .second-content .top-contain .match-img-section {
+    width: 584px;
+    margin: 0 auto;
+  }
+  .main-section section .second-content .top-contain .match-img-section .match-img-contain {
+    width: 225px;
+    height: 405px;
+    position: relative;
+  }
+  .main-section section .second-content .top-contain .match-img-section .match-img-contain .match-img {
+    width: 105%;
+    height: 105%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .main-section section .second-content .top-contain .match-img-section .match-img-contain .match-img-txt {
+    position: absolute;
+    right: -15px;
+    bottom: 30px;
+  }
+  .main-section section .second-content .top-contain .content-path {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    margin-top: 15px;
+  }
+  .main-section section .second-content .top-contain .content-path .img-road {
+    width: 100%;
+  }
+  .main-section section .second-content .top-contain .content-path .img-road .road-path {
+    width: 100%;
+    height: 40px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center;
+       object-position: center;
+  }
+  .main-section section .second-content .top-contain .content-path .txt-container {
+    max-width: 584px;
+    position: relative;
+  }
+  .main-section section .second-content .top-contain .content-path .txt-container .svg {
+    position: absolute;
+    top: -100px;
+    right: -80px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .main-section section .second-content .top-contain .content-path .txt-container .svg svg {
+    width: 95%;
+    height: 95%;
+  }
+}
+@media (min-width: 769px) and (max-width: 991px) {
+  .main-section section {
+    margin: 0 auto;
+    padding-top: 200px;
+    overflow: hidden;
+  }
+  .main-section section .txt {
+    max-width: 584px;
+  }
+  .main-section section .txt p {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 30px;
+    letter-spacing: -0.02em;
+  }
+  .main-section section .first-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 150px;
+  }
+  .main-section section .first-content .top-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+  }
+  .main-section section .second-content {
+    width: 100%;
+    margin-top: -450px;
+  }
+  .main-section section .second-content .top-contain {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .main-section section .second-content .top-contain .match-img-section {
+    width: 584px;
+    margin: 0 auto;
+  }
+  .main-section section .second-content .top-contain .match-img-section .match-img-contain {
+    width: 225px;
+    height: 405px;
+    position: relative;
+  }
+  .main-section section .second-content .top-contain .match-img-section .match-img-contain .match-img {
+    width: 105%;
+    height: 105%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .main-section section .second-content .top-contain .match-img-section .match-img-contain .match-img-txt {
+    position: absolute;
+    right: -15px;
+    bottom: 30px;
+  }
+  .main-section section .second-content .top-contain .content-path {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    margin-top: 15px;
+  }
+  .main-section section .second-content .top-contain .content-path .img-road {
+    width: 100%;
+  }
+  .main-section section .second-content .top-contain .content-path .img-road .road-path {
+    width: 100%;
+    height: 40px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center;
+       object-position: center;
+  }
+  .main-section section .second-content .top-contain .content-path .txt-container {
+    max-width: 584px;
+    position: relative;
+  }
+  .main-section section .second-content .top-contain .content-path .txt-container .svg {
+    position: absolute;
+    top: -110px;
+    right: -100px;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }/*# sourceMappingURL=Main.css.map */

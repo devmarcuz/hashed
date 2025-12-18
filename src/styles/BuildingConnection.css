@@ -27,4 +27,27 @@
   font-size: 22px;
   line-height: 30px;
   letter-spacing: -0.02em;
+}
+@media (max-width: 575px) {
+  .building-connection-section section {
+    max-width: 584px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  .building-connection-section section .content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .building-connection-section section .content img {
+    margin-bottom: 20px;
+    width: 136.1847991943px;
+    height: 48px;
+  }
+  .building-connection-section section .content .txt p {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.02em;
+  }
 }/*# sourceMappingURL=BuildingConnection.css.map */

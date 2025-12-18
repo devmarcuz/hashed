@@ -63,4 +63,41 @@
 }
 .hero-section section .bottom-arts img:nth-child(3):hover {
   transform: scale(1.2) rotate(10deg);
+}
+@media (max-width: 575px) {
+  .hero-section section {
+    max-width: 100%;
+  }
+  .hero-section section .content h2 {
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 38px;
+    text-align: center;
+    letter-spacing: -0.05em;
+  }
+  .hero-section section .content h2 span {
+    font-style: italic;
+  }
+  .hero-section section .content svg {
+    width: 180.75px;
+    height: 45px;
+  }
+  .hero-section section .bottom-arts img {
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+    height: 155.4210357666px;
+  }
+  .hero-section section .bottom-arts img:nth-child(1) {
+    width: 213.3584442139px;
+  }
+  .hero-section section .bottom-arts img:nth-child(2) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -110px;
+    width: 144.1892879898px;
+  }
+  .hero-section section .bottom-arts img:nth-child(3) {
+    width: 161.6427612305px;
+  }
 }/*# sourceMappingURL=HeroSection.css.map */

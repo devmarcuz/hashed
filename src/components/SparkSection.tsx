@@ -30,7 +30,7 @@ const SparkSection = () => {
     if (treeHouseInView) {
       const timer = setTimeout(() => {
         setBottomContentReady(true);
-      }, 1400); // Treehouse (1.4s) completes, then immediately trigger top content
+      }, 800);
       return () => clearTimeout(timer);
     }
     if (!treeHouseInView) {

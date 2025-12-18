@@ -33,4 +33,35 @@
       }
     }
   }
+
+  @media (max-width: 575px) {
+    & {
+      section {
+        max-width: 584px;
+        margin: 0 auto;
+        padding: 0 16px;
+
+        .content {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+
+          img {
+            margin-bottom: 20px;
+            width: 136.18479919433594px;
+            height: 48px;
+          }
+
+          .txt {
+            p {
+              font-weight: 500;
+              font-size: 16px;
+              line-height: 22px;
+              letter-spacing: -0.02em;
+            }
+          }
+        }
+      }
+    }
+  }
 }

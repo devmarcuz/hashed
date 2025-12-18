@@ -73,4 +73,55 @@
       }
     }
   }
+
+  @media (max-width: 575px) {
+    & {
+      section {
+        max-width: 100%;
+
+        .content {
+          h2 {
+            font-weight: 400;
+            font-size: 40px;
+            line-height: 38px;
+            text-align: center;
+            letter-spacing: -0.05em;
+
+            span {
+              font-style: italic;
+            }
+          }
+
+          svg {
+            width: 180.75px;
+            height: 45px;
+          }
+        }
+
+        .bottom-arts {
+          img {
+            cursor: pointer;
+            transition: 0.2s all ease-in-out;
+            height: 155.42103576660156px;
+
+            &:nth-child(1) {
+              width: 213.3584442138672px;
+            }
+
+            &:nth-child(2) {
+              position: absolute;
+              left: 50%;
+              transform: translateX(-50%);
+              top: -110px;
+              width: 144.1892879897787px;
+            }
+
+            &:nth-child(3) {
+              width: 161.64276123046875px;
+            }
+          }
+        }
+      }
+    }
+  }
 }

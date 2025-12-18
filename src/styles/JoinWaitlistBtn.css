@@ -27,8 +27,7 @@
 .joinwaitlist-btn-wrapper:active .joinwaitlist-btn {
   background-image: url("../assets/svgs/green_btn.svg");
 }
-
-.joinwaitlist-btn {
+.joinwaitlist-btn-wrapper .joinwaitlist-btn {
   position: relative;
   display: flex;
   justify-content: center;
@@ -44,14 +43,48 @@
   border-radius: 12px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.joinwaitlist-btn.background-red {
+.joinwaitlist-btn-wrapper .joinwaitlist-btn.background-red {
   background-image: url("../assets/svgs/red_btn.svg");
 }
-.joinwaitlist-btn p {
+.joinwaitlist-btn-wrapper .joinwaitlist-btn p {
   font-weight: 500;
   font-size: 16px;
   line-height: 22px;
   letter-spacing: -0.02em;
   color: #ffffff;
   margin: 0;
+}
+@media (max-width: 575px) {
+  .joinwaitlist-btn-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .joinwaitlist-btn-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 5px;
+  }
+  .joinwaitlist-btn-wrapper .joinwaitlist-btn {
+    padding: 7px;
+    padding-right: 5px;
+    gap: 8px;
+    height: 32px;
+    border-radius: 5px;
+  }
+  .joinwaitlist-btn-wrapper .joinwaitlist-btn p {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: -0.02em;
+  }
+  .joinwaitlist-btn-wrapper .joinwaitlist-btn svg {
+    width: 10px;
+    height: 9px;
+  }
 }/*# sourceMappingURL=JoinWaitlistBtn.css.map */

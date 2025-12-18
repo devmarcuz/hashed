@@ -53,4 +53,75 @@
   top: 60px;
   left: 120px;
   z-index: 1;
+}
+@media (max-width: 575px) {
+  .spark-section section {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding-top: 160px;
+    height: 100%;
+  }
+  .spark-section section .top-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .spark-section section .top-content .fire {
+    position: absolute;
+    top: -30px;
+    left: 120px;
+  }
+  .spark-section section .top-content .txt {
+    max-width: 584px;
+  }
+  .spark-section section .top-content .txt p {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.02em;
+  }
+}
+@media (min-width: 992px) and (max-width: 1102px) {
+  .spark-section section {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding-top: 150px;
+    height: 100%;
+  }
+  .spark-section section .top-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .spark-section section .top-content .fire {
+    position: absolute;
+    top: -30px;
+    left: 120px;
+  }
+  .spark-section section .top-content .txt {
+    max-width: 584px;
+  }
+  .spark-section section .top-content .txt p {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 30px;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+  }
 }/*# sourceMappingURL=SparkSection.css.map */
