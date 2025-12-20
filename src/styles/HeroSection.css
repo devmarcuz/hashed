@@ -82,6 +82,9 @@
     width: 180.75px;
     height: 45px;
   }
+  .hero-section section .bottom-arts {
+    left: -20px;
+  }
   .hero-section section .bottom-arts img {
     cursor: pointer;
     transition: 0.2s all ease-in-out;
