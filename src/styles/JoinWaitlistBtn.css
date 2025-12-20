@@ -45,6 +45,9 @@
 }
 .joinwaitlist-btn-wrapper .joinwaitlist-btn.background-red {
   background-image: url("../assets/svgs/red_btn.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .joinwaitlist-btn-wrapper .joinwaitlist-btn p {
   font-weight: 500;

@@ -11,7 +11,7 @@ const BuildingConnection = () => {
   const secondTxtRef = useRef(null);
   const thirdTxtRef = useRef(null);
   const buildingSectionRef = useRef<HTMLDivElement>(null);
-  const { setActiveSection } = useSectionContext();
+  const { registerSection } = useSectionContext();
 
   const buildImgInView = useInView(buildImgRef, {
     once: false,
@@ -33,28 +33,13 @@ const BuildingConnection = () => {
     margin: "-100px",
   });
 
-  // Observer for section detection
   useEffect(() => {
-    if (!buildingSectionRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.boundingClientRect.top <= 100) {
-            setActiveSection("building");
-          }
-        });
-      },
-      {
-        threshold: [0, 0.1, 0.5, 0.9, 1],
-        rootMargin: "-80px 0px 0px 0px",
-      }
-    );
-
-    observer.observe(buildingSectionRef.current);
-
-    return () => observer.disconnect();
-  }, [setActiveSection]);
+    if (buildingSectionRef.current) {
+      buildingSectionRef.current.setAttribute("data-section", "building");
+      registerSection("building", buildingSectionRef.current);
+    }
+    return () => registerSection("building", null);
+  }, [registerSection]);
 
   return (
     <div className="building-connection-section" ref={buildingSectionRef}>
@@ -86,7 +71,7 @@ const BuildingConnection = () => {
             </motion.div>
           </div>
 
-          <div style={{ overflow: "hidden" }}>
+          <div>
             <motion.div
               className="txt"
               ref={firstTxtRef}

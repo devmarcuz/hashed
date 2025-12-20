@@ -18,8 +18,11 @@ const MainSection = () => {
   const roadPathRef = useRef(null);
   const secondTxtRef = useRef(null);
   const mainSectionRef = useRef<HTMLDivElement>(null);
-  const { setActiveSection } = useSectionContext();
+  const { registerSection } = useSectionContext();
   const [secondContentReady, setSecondContentReady] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 1200
+  );
 
   const topContentInView = useInView(topContentRef, {
     once: false,
@@ -38,24 +41,52 @@ const MainSection = () => {
 
   const imageScale = useTransform(scrollYProgress, [0.2, 0.5], [1, 0.6]);
 
-  const imageY = useTransform(scrollYProgress, [0.2, 0.5], [0, -270]);
+  const getYTransform = () => {
+    if (windowWidth <= 575) {
+      return [0, -210];
+    } else if (windowWidth <= 768) {
+      return [0, -230];
+    } else if (windowWidth <= 991) {
+      return [0, -270];
+    } else {
+      return [0, -270];
+    }
+  };
 
-  const imageX = useTransform(scrollYProgress, [0.2, 0.5], [0, 300]);
+  const imageY = useTransform(scrollYProgress, [0.2, 0.5], getYTransform());
 
-  // Faster opacity transition
+  const getXTransform = () => {
+    if (windowWidth <= 575) {
+      return [0, 50];
+    } else if (windowWidth <= 768) {
+      return [0, 100];
+    } else if (windowWidth <= 991) {
+      return [0, 150];
+    } else {
+      return [0, 300];
+    }
+  };
+
+  const imageX = useTransform(scrollYProgress, [0.2, 0.5], getXTransform());
+
   const secondContentOpacity = useTransform(
     scrollYProgress,
     [0.45, 0.52],
     [0, 1]
   );
 
-  // Watch for when secondContentOpacity becomes 1
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     const unsubscribe = secondContentOpacity.on("change", (latest) => {
       if (latest >= 0.99 && !secondContentReady) {
         setTimeout(() => {
           setSecondContentReady(true);
-        }, 200); // Reduced to 0.2s delay
+        }, 200);
       } else if (latest < 0.99 && secondContentReady) {
         setSecondContentReady(false);
       }
@@ -64,48 +95,33 @@ const MainSection = () => {
     return () => unsubscribe();
   }, [secondContentOpacity, secondContentReady]);
 
-  // Observer for section detection
   useEffect(() => {
-    if (!mainSectionRef.current) return;
+    if (mainSectionRef.current) {
+      mainSectionRef.current.setAttribute("data-section", "main");
+      registerSection("main", mainSectionRef.current);
+    }
+    return () => registerSection("main", null);
+  }, [registerSection]);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.boundingClientRect.top <= 100) {
-            setActiveSection("main");
-          }
-        });
-      },
-      {
-        threshold: [0, 0.1, 0.5, 0.9, 1],
-        rootMargin: "-80px 0px 0px 0px",
-      }
-    );
+  // useEffect(() => {
+  //   if (!mainSectionRef.current) return;
 
-    observer.observe(mainSectionRef.current);
+  //   const ctx = gsap.context(() => {
+  //     ScrollTrigger.create({
+  //       trigger: mainSectionRef.current,
+  //       start: "bottom bottom",
+  //       end: "+=150%",
+  //       pin: true,
+  //       pinSpacing: false,
+  //       anticipatePin: 1,
+  //       invalidateOnRefresh: true,
+  //       pinReparent: false,
+  //       fastScrollEnd: true,
+  //     });
+  //   }, mainSectionRef);
 
-    return () => observer.disconnect();
-  }, [setActiveSection]);
-
-  useEffect(() => {
-    if (!mainSectionRef.current) return;
-
-    const ctx = gsap.context(() => {
-      ScrollTrigger.create({
-        trigger: mainSectionRef.current,
-        start: "bottom bottom",
-        end: "+=150%",
-        pin: true,
-        pinSpacing: false,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        pinReparent: false,
-        fastScrollEnd: true,
-      });
-    }, mainSectionRef);
-
-    return () => ctx.revert();
-  }, []);
+  //   return () => ctx.revert();
+  // }, []);
 
   return (
     <div className="main-section" ref={mainSectionRef}>

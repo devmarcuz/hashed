@@ -7,11 +7,11 @@ import "@/styles/Header.css";
 import Link from "next/link";
 import { useSectionContext } from "@/app/page";
 
-// Map sections to logo paths
 const logoMap: Record<string, string> = {
   hero: "/svgs/logo-frame-1.svg",
-  main: "/svgs/logo-frame-2.svg", // You can change these paths
-  spark: "/svgs/logo-frame-3.svg",
+  main: "/svgs/logo-frame-2.svg",
+  // spark: "/svgs/logo-frame-3.svg",
+  spark: "/svgs/logo-frame-1.svg",
   building: "/svgs/logo-frame-1.svg",
   footer: "/svgs/logo-frame-1.svg",
 };

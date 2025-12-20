@@ -10,9 +10,8 @@ const HeroSection = () => {
   const { scrollY } = useScroll();
   const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const { setActiveSection } = useSectionContext();
+  const { registerSection } = useSectionContext();
 
-  // Animate bottom-arts: fade in AND slide up on enter, reverse on exit
   const scrollY_bottomArts = useTransform(scrollY, [0, 400], [0, 60]);
   const scrollOpacity_bottomArts = useTransform(scrollY, [0, 400], [1, 0]);
 
@@ -28,7 +27,6 @@ const HeroSection = () => {
     restDelta: 0.001,
   });
 
-  // Animate content elements (h2 and StrokeMoments)
   const scrollY_contentItems = useTransform(scrollY, [0, 400], [0, 60]);
   const scrollOpacity_contentItems = useTransform(scrollY, [0, 400], [1, 0]);
 
@@ -51,29 +49,13 @@ const HeroSection = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Observer to detect when section is at the top (behind header)
   useEffect(() => {
-    if (!sectionRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          // Check if section is intersecting with the top of viewport
-          if (entry.isIntersecting && entry.boundingClientRect.top <= 100) {
-            setActiveSection("hero");
-          }
-        });
-      },
-      {
-        threshold: [0, 0.1, 0.5, 0.9, 1],
-        rootMargin: "-80px 0px 0px 0px", // Offset for header height
-      }
-    );
-
-    observer.observe(sectionRef.current);
-
-    return () => observer.disconnect();
-  }, [setActiveSection]);
+    if (sectionRef.current) {
+      sectionRef.current.setAttribute("data-section", "hero");
+      registerSection("hero", sectionRef.current);
+    }
+    return () => registerSection("hero", null);
+  }, [registerSection]);
 
   return (
     <div className="hero-section" ref={sectionRef}>

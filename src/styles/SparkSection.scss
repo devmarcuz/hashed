@@ -27,7 +27,7 @@
 
       .fire {
         position: absolute;
-        top: -30px;
+        top: -60px;
         left: 120px;
       }
 
@@ -48,15 +48,36 @@
   .bottom-content {
     position: absolute;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0%;
+    // transform: translateX(-50%);
     z-index: 1;
     height: 313px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    // max-width: 690px;
+    width: 100%;
+
+    .bottom-img {
+      max-width: 690px;
+      margin: 0 auto;
+      position: absolute;
+    }
+
+    .tree-house-img {
+      width: 100%;
+      height: auto;
+      // position: absolute;
+      // bottom: 0;
+      // left: 50%;
+      // transform: translateX(-50%);
+      // z-index: 100;
+    }
 
     .heart-img {
       position: absolute;
-      top: 60px;
-      left: 120px;
+      top: 50px;
+      left: 100px;
       z-index: 1;
     }
   }
@@ -84,12 +105,15 @@
 
           .fire {
             position: absolute;
-            top: -30px;
+            top: -40px;
             left: 120px;
+            width: 25.690885543823242px;
+            height: 40px;
           }
 
           .txt {
             max-width: 584px;
+            padding: 0 32px;
 
             p {
               font-weight: 500;
@@ -100,14 +124,52 @@
           }
         }
       }
+
+      .bottom-content {
+        position: absolute;
+        bottom: 0%;
+        z-index: 1;
+        height: 313px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        width: 100%;
+
+        .tree-house-img {
+          width: 100%;
+          height: auto;
+        }
+
+        .heart-img {
+          position: absolute;
+          top: 20px;
+          left: 50px;
+          z-index: 1;
+          transform: scale(0.5);
+        }
+      }
     }
   }
 
   @media (min-width: 576px) and (max-width: 769px) {
+    & {
+      .bottom-content {
+        .tree-house-img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
   }
 
   @media (min-width: 769px) and (max-width: 991px) {
     & {
+      .bottom-content {
+        .tree-house-img {
+          width: 100%;
+          height: auto;
+        }
+      }
     }
   }
 

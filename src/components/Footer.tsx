@@ -16,7 +16,7 @@ const Footer = () => {
   const momentsRef = useRef(null);
   const socialLinksRef = useRef(null);
   const footerSectionRef = useRef<HTMLDivElement>(null);
-  const { setActiveSection } = useSectionContext();
+  const { registerSection } = useSectionContext();
 
   const hugsImgInView = useInView(hugsImgRef, {
     once: false,
@@ -48,28 +48,13 @@ const Footer = () => {
     margin: "-0px",
   });
 
-  // Observer for section detection
   useEffect(() => {
-    if (!footerSectionRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.boundingClientRect.top <= 100) {
-            setActiveSection("footer");
-          }
-        });
-      },
-      {
-        threshold: [0, 0.1, 0.5, 0.9, 1],
-        rootMargin: "-80px 0px 0px 0px",
-      }
-    );
-
-    observer.observe(footerSectionRef.current);
-
-    return () => observer.disconnect();
-  }, [setActiveSection]);
+    if (footerSectionRef.current) {
+      footerSectionRef.current.setAttribute("data-section", "footer");
+      registerSection("footer", footerSectionRef.current);
+    }
+    return () => registerSection("footer", null);
+  }, [registerSection]);
 
   return (
     <div className="footer" ref={footerSectionRef}>
