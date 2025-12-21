@@ -2,40 +2,15 @@ import React, { useRef, useEffect, useState } from "react";
 import "@/styles/SparkSection.css";
 import NoiseEffect from "./NoiseEffect";
 import Image from "next/image";
-import { useSectionContext } from "@/app/page";
 import { motion, useAnimation } from "framer-motion";
 
 const SparkSection = () => {
   const sparkSectionRef = useRef<HTMLDivElement>(null);
-  const { setActiveSection } = useSectionContext();
   const [isInView, setIsInView] = useState(false);
 
   const bottomControls = useAnimation();
   const txtControls = useAnimation();
   const fireControls = useAnimation();
-
-  // Observer for section detection
-  useEffect(() => {
-    if (!sparkSectionRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.boundingClientRect.top <= 100) {
-            setActiveSection("spark");
-          }
-        });
-      },
-      {
-        threshold: [0, 0.1, 0.5, 0.9, 1],
-        rootMargin: "-80px 0px 0px 0px",
-      }
-    );
-
-    observer.observe(sparkSectionRef.current);
-
-    return () => observer.disconnect();
-  }, [setActiveSection]);
 
   // Animation trigger
   useEffect(() => {

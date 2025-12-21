@@ -1,24 +1,53 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import JoinWaitlistBtn from "./JoinWaitlistBtn";
 import "@/styles/Header.css";
 import Link from "next/link";
-import { useSectionContext } from "@/app/page";
+import { useState, useEffect } from "react";
 
 const logoMap: Record<string, string> = {
   hero: "/svgs/logo-frame-1.svg",
   main: "/svgs/logo-frame-2.svg",
-  // spark: "/svgs/logo-frame-3.svg",
-  spark: "/svgs/logo-frame-1.svg",
+  spark: "/svgs/logo-frame-3.svg",
   building: "/svgs/logo-frame-1.svg",
   footer: "/svgs/logo-frame-1.svg",
 };
 
-const Header = () => {
-  const { activeSection } = useSectionContext();
-  const logoSrc = logoMap[activeSection] || logoMap.hero;
+interface HeaderProps {
+  currentSection: string;
+}
+
+const Header = ({ currentSection }: HeaderProps) => {
+  const [currentLogo, setCurrentLogo] = useState(logoMap.hero);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const [isRedButton, setIsRedButton] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsInitialLoad(false);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!isInitialLoad) {
+      const newLogo = logoMap[currentSection] || logoMap.hero;
+      if (newLogo !== currentLogo) {
+        setCurrentLogo(newLogo);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentSection, isInitialLoad]);
+
+  useEffect(() => {
+    if (currentSection === "spark") {
+      setIsRedButton(true);
+    } else {
+      setIsRedButton(false);
+    }
+  }, [currentSection]);
 
   return (
     <div className="header">
@@ -33,25 +62,27 @@ const Header = () => {
               delay: 0.3,
             }}
           >
-            <motion.div
-              key={logoSrc}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{
-                duration: 0.3,
-                ease: [0.25, 0.1, 0.25, 1],
-              }}
-            >
-              <Image
-                src={logoSrc}
-                alt=""
-                width={126}
-                height={56}
-                priority
-                loading="eager"
-              />
-            </motion.div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentLogo}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{
+                  duration: 0.4,
+                  ease: [0.25, 0.1, 0.25, 1],
+                }}
+              >
+                <Image
+                  src={currentLogo}
+                  alt=""
+                  width={126}
+                  height={56}
+                  priority
+                  loading="eager"
+                />
+              </motion.div>
+            </AnimatePresence>
           </motion.div>
         </Link>
 
@@ -64,7 +95,7 @@ const Header = () => {
             delay: 0.6,
           }}
         >
-          <JoinWaitlistBtn />
+          <JoinWaitlistBtn className={isRedButton ? "background-red" : ""} />
         </motion.div>
       </div>
     </div>

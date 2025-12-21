@@ -316,6 +316,7 @@
         gap: 16px;
         flex-direction: column-reverse;
         padding: 0 16px;
+        padding-bottom: 20px;
 
         .form-wrapper {
           display: flex;
@@ -328,7 +329,7 @@
           border: 1px solid #e8ebdf;
           border-radius: 24px;
           position: relative;
-          max-height: 90vh;
+          max-height: 80vh;
           overflow: hidden;
 
           .button-wrap {

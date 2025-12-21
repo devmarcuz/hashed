@@ -27,7 +27,7 @@
 }
 .spark-section section .top-content .fire {
   position: absolute;
-  top: -60px;
+  top: -40px;
   left: 120px;
 }
 .spark-section section .top-content .txt {
@@ -48,7 +48,7 @@
   height: 313px;
   display: flex;
   align-items: flex-end;
-  justify-content: flex-end;
+  justify-content: center;
   width: 100%;
 }
 .spark-section .bottom-content .bottom-img {
@@ -88,7 +88,7 @@
   }
   .spark-section section .top-content .fire {
     position: absolute;
-    top: -40px;
+    top: -20px;
     left: 120px;
     width: 25.6908855438px;
     height: 40px;

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useEffect, useRef, useState, createContext, useContext } from "react";
+import { useEffect, useRef, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -25,89 +25,16 @@ declare global {
   }
 }
 
-type SectionType = "hero" | "main" | "spark" | "building" | "footer";
-
-interface SectionContextType {
-  activeSection: SectionType;
-  setActiveSection: (section: SectionType) => void;
-  registerSection: (section: SectionType, element: HTMLElement | null) => void;
-}
-
-export const SectionContext = createContext<SectionContextType>({
-  activeSection: "hero",
-  setActiveSection: () => {},
-  registerSection: () => {},
-});
-
-export const useSectionContext = () => useContext(SectionContext);
-
 export default function Home() {
   const lenisRef = useRef<Lenis | null>(null);
   const [showLoader, setShowLoader] = useState<boolean>(true);
-  const [activeSection, setActiveSection] = useState<SectionType>("hero");
-  const sectionRefsMap = useRef<Map<SectionType, HTMLElement>>(new Map());
+  const [currentSection, setCurrentSection] = useState<string>("hero");
 
-  const registerSection = (
-    section: SectionType,
-    element: HTMLElement | null
-  ) => {
-    if (element) {
-      sectionRefsMap.current.set(section, element);
-    } else {
-      sectionRefsMap.current.delete(section);
-    }
-  };
-
-  // Global section detection observer
-  useEffect(() => {
-    const sections: SectionType[] = [
-      "hero",
-      "main",
-      "spark",
-      "building",
-      "footer",
-    ];
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // Find all currently intersecting sections in the header zone
-        const intersectingSections = entries
-          .filter(
-            (entry) => entry.isIntersecting && entry.intersectionRatio > 0
-          )
-          .map(
-            (entry) => entry.target.getAttribute("data-section") as SectionType
-          )
-          .filter(Boolean);
-
-        // Set the active section to the first one (topmost in viewport)
-        if (intersectingSections.length > 0) {
-          setActiveSection(intersectingSections[0]);
-        }
-      },
-      {
-        rootMargin: "-1px 0px -99% 0px",
-        threshold: [0, 0.1],
-      }
-    );
-
-    // Observe all registered sections
-    const observeSections = () => {
-      sections.forEach((section) => {
-        const element = sectionRefsMap.current.get(section);
-        if (element) {
-          observer.observe(element);
-        }
-      });
-    };
-
-    const timer = setTimeout(observeSections, 100);
-
-    return () => {
-      clearTimeout(timer);
-      observer.disconnect();
-    };
-  }, []);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const mainRef = useRef<HTMLDivElement>(null);
+  const sparkRef = useRef<HTMLDivElement>(null);
+  const buildingRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -171,34 +98,81 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    if (showLoader) return;
+
+    const checkCurrentSection = () => {
+      const headerHeight = 100;
+
+      // Check scrollable sections first (they overlay the fixed hero)
+      const scrollableSections = [
+        { ref: mainRef, name: "main" },
+        { ref: sparkRef, name: "spark" },
+        { ref: buildingRef, name: "building" },
+        { ref: footerRef, name: "footer" },
+      ];
+
+      // Check if any scrollable section is behind the header
+      for (let i = 0; i < scrollableSections.length; i++) {
+        const section = scrollableSections[i];
+        if (section.ref.current) {
+          const rect = section.ref.current.getBoundingClientRect();
+
+          // If this section's top is above or at the header position, it's covering the hero
+          if (rect.top <= headerHeight && rect.bottom > headerHeight) {
+            setCurrentSection(section.name);
+            return;
+          }
+        }
+      }
+
+      // If no scrollable section is behind the header, we're showing the hero
+      setCurrentSection("hero");
+    };
+
+    checkCurrentSection();
+
+    const handleScroll = () => {
+      requestAnimationFrame(checkCurrentSection);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [showLoader]);
+
   return (
     <ModalProvider>
-      <SectionContext.Provider
-        value={{
-          activeSection,
-          setActiveSection,
-          registerSection,
-        }}
-      >
-        <div className="home-page">
-          {showLoader && <PageLoad onDone={() => setShowLoader(false)} />}
-          <JoinWaitlistFormModal />
-          {!showLoader && (
-            <main className="scroll-container">
-              <Header />
+      <div className="home-page">
+        {showLoader && <PageLoad onDone={() => setShowLoader(false)} />}
+        <JoinWaitlistFormModal />
+        {!showLoader && (
+          <main className="scroll-container">
+            <Header currentSection={currentSection} />
+            <div ref={heroRef}>
               <HeroSection />
-              <div className="main-containers">
-                <div className="overlapped-sections">
+            </div>
+            <div className="main-containers">
+              <div className="overlapped-sections">
+                <div ref={mainRef}>
                   <MainSection />
+                </div>
+                <div ref={sparkRef}>
                   <SparkSection />
                 </div>
+              </div>
+              <div ref={buildingRef}>
                 <BuildingConnection />
+              </div>
+              <div ref={footerRef}>
                 <Footer />
               </div>
-            </main>
-          )}
-        </div>
-      </SectionContext.Provider>
+            </div>
+          </main>
+        )}
+      </div>
     </ModalProvider>
   );
 }

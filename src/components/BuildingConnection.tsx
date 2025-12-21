@@ -1,9 +1,8 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import "@/styles/BuildingConnection.css";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import NoiseEffect from "./NoiseEffect";
-import { useSectionContext } from "@/app/page";
 
 const BuildingConnection = () => {
   const buildImgRef = useRef(null);
@@ -11,7 +10,6 @@ const BuildingConnection = () => {
   const secondTxtRef = useRef(null);
   const thirdTxtRef = useRef(null);
   const buildingSectionRef = useRef<HTMLDivElement>(null);
-  const { registerSection } = useSectionContext();
 
   const buildImgInView = useInView(buildImgRef, {
     once: false,
@@ -32,14 +30,6 @@ const BuildingConnection = () => {
     once: false,
     margin: "-100px",
   });
-
-  useEffect(() => {
-    if (buildingSectionRef.current) {
-      buildingSectionRef.current.setAttribute("data-section", "building");
-      registerSection("building", buildingSectionRef.current);
-    }
-    return () => registerSection("building", null);
-  }, [registerSection]);
 
   return (
     <div className="building-connection-section" ref={buildingSectionRef}>

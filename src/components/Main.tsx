@@ -4,9 +4,6 @@ import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import StrokeCross from "./StrokeCross";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useSectionContext } from "@/app/page";
 
 const MainSection = () => {
   const topContentRef = useRef(null);
@@ -15,10 +12,8 @@ const MainSection = () => {
   const sectionRef = useRef(null);
   const matchImgRef = useRef(null);
   const firstTxtRef = useRef(null);
-  const roadPathRef = useRef(null);
   const secondTxtRef = useRef(null);
   const mainSectionRef = useRef<HTMLDivElement>(null);
-  const { registerSection } = useSectionContext();
   const [secondContentReady, setSecondContentReady] = useState(false);
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1200
@@ -32,6 +27,11 @@ const MainSection = () => {
   const imageInView = useInView(imageRef, {
     once: true,
     margin: "-100px",
+  });
+
+  const mainSectionInView = useInView(mainSectionRef, {
+    once: false,
+    amount: 0.2,
   });
 
   const { scrollYProgress } = useScroll({
@@ -83,45 +83,17 @@ const MainSection = () => {
 
   useEffect(() => {
     const unsubscribe = secondContentOpacity.on("change", (latest) => {
-      if (latest >= 0.99 && !secondContentReady) {
+      if (latest >= 0.99 && !secondContentReady && mainSectionInView) {
         setTimeout(() => {
           setSecondContentReady(true);
         }, 200);
-      } else if (latest < 0.99 && secondContentReady) {
+      } else if ((latest < 0.99 || !mainSectionInView) && secondContentReady) {
         setSecondContentReady(false);
       }
     });
 
     return () => unsubscribe();
-  }, [secondContentOpacity, secondContentReady]);
-
-  useEffect(() => {
-    if (mainSectionRef.current) {
-      mainSectionRef.current.setAttribute("data-section", "main");
-      registerSection("main", mainSectionRef.current);
-    }
-    return () => registerSection("main", null);
-  }, [registerSection]);
-
-  // useEffect(() => {
-  //   if (!mainSectionRef.current) return;
-
-  //   const ctx = gsap.context(() => {
-  //     ScrollTrigger.create({
-  //       trigger: mainSectionRef.current,
-  //       start: "bottom bottom",
-  //       end: "+=150%",
-  //       pin: true,
-  //       pinSpacing: false,
-  //       anticipatePin: 1,
-  //       invalidateOnRefresh: true,
-  //       pinReparent: false,
-  //       fastScrollEnd: true,
-  //     });
-  //   }, mainSectionRef);
-
-  //   return () => ctx.revert();
-  // }, []);
+  }, [secondContentOpacity, secondContentReady, mainSectionInView]);
 
   return (
     <div className="main-section" ref={mainSectionRef}>
@@ -223,7 +195,7 @@ const MainSection = () => {
                   ref={matchImgRef}
                   initial={{ y: 60, opacity: 0 }}
                   animate={
-                    secondContentReady
+                    secondContentReady && mainSectionInView
                       ? { y: 0, opacity: 1 }
                       : { y: 60, opacity: 0 }
                   }
@@ -263,7 +235,7 @@ const MainSection = () => {
                   ref={firstTxtRef}
                   initial={{ y: 60, opacity: 0 }}
                   animate={
-                    secondContentReady
+                    secondContentReady && mainSectionInView
                       ? { y: 0, opacity: 1 }
                       : { y: 60, opacity: 0 }
                   }
@@ -297,7 +269,7 @@ const MainSection = () => {
                   <motion.div
                     initial={{ y: 60, opacity: 0 }}
                     animate={
-                      secondContentReady
+                      secondContentReady && mainSectionInView
                         ? { y: 0, opacity: 1 }
                         : { y: 60, opacity: 0 }
                     }
@@ -317,7 +289,7 @@ const MainSection = () => {
                     ref={secondTxtRef}
                     initial={{ y: 60, opacity: 0 }}
                     animate={
-                      secondContentReady
+                      secondContentReady && mainSectionInView
                         ? { y: 0, opacity: 1 }
                         : { y: 60, opacity: 0 }
                     }

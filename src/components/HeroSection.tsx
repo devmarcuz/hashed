@@ -4,13 +4,11 @@ import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import StrokeMoments from "./StrokeMoments";
-import { useSectionContext } from "@/app/page";
 
 const HeroSection = () => {
   const { scrollY } = useScroll();
   const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const { registerSection } = useSectionContext();
 
   const scrollY_bottomArts = useTransform(scrollY, [0, 400], [0, 60]);
   const scrollOpacity_bottomArts = useTransform(scrollY, [0, 400], [1, 0]);
@@ -48,14 +46,6 @@ const HeroSection = () => {
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
-
-  useEffect(() => {
-    if (sectionRef.current) {
-      sectionRef.current.setAttribute("data-section", "hero");
-      registerSection("hero", sectionRef.current);
-    }
-    return () => registerSection("hero", null);
-  }, [registerSection]);
 
   return (
     <div className="hero-section" ref={sectionRef}>

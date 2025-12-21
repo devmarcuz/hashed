@@ -27,7 +27,7 @@
 
       .fire {
         position: absolute;
-        top: -60px;
+        top: -40px;
         left: 120px;
       }
 
@@ -54,8 +54,7 @@
     height: 313px;
     display: flex;
     align-items: flex-end;
-    justify-content: flex-end;
-    // max-width: 690px;
+    justify-content: center;
     width: 100%;
 
     .bottom-img {
@@ -105,7 +104,7 @@
 
           .fire {
             position: absolute;
-            top: -40px;
+            top: -20px;
             left: 120px;
             width: 25.690885543823242px;
             height: 40px;

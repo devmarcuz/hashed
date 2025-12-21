@@ -5,8 +5,7 @@ import Link from "next/link";
 import NoiseEffect from "./NoiseEffect";
 import "@/styles/Footer.css";
 import { motion, useInView } from "framer-motion";
-import { useRef, useEffect } from "react";
-import { useSectionContext } from "@/app/page";
+import { useRef } from "react";
 
 const Footer = () => {
   const hugsImgRef = useRef(null);
@@ -16,7 +15,6 @@ const Footer = () => {
   const momentsRef = useRef(null);
   const socialLinksRef = useRef(null);
   const footerSectionRef = useRef<HTMLDivElement>(null);
-  const { registerSection } = useSectionContext();
 
   const hugsImgInView = useInView(hugsImgRef, {
     once: false,
@@ -47,14 +45,6 @@ const Footer = () => {
     once: false,
     margin: "-0px",
   });
-
-  useEffect(() => {
-    if (footerSectionRef.current) {
-      footerSectionRef.current.setAttribute("data-section", "footer");
-      registerSection("footer", footerSectionRef.current);
-    }
-    return () => registerSection("footer", null);
-  }, [registerSection]);
 
   return (
     <div className="footer" ref={footerSectionRef}>
