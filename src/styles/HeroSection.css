@@ -95,8 +95,8 @@
   }
   .hero-section section .bottom-arts img:nth-child(2) {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 53%;
+    transform: translateX(-53%);
     top: -110px;
     width: 144.1892879898px;
   }
