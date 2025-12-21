@@ -25,10 +25,67 @@
   position: relative;
   z-index: 1;
 }
-.spark-section section .top-content .fire {
+.spark-section section .top-content .fire-wrapper {
   position: absolute;
-  top: -40px;
+  top: -60px;
   left: 120px;
+}
+.spark-section section .top-content .fire {
+  position: relative;
+  z-index: 2;
+  animation: fire-flicker 0.15s infinite alternate;
+}
+.spark-section section .top-content .fire::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(255, 140, 0, 0.6) 0%, rgba(255, 69, 0, 0.4) 30%, transparent 70%);
+  border-radius: 50%;
+  animation: radiant-pulse 2s ease-in-out infinite;
+  z-index: -1;
+}
+.spark-section section .top-content .fire::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(255, 140, 0, 0.3) 0%, rgba(255, 69, 0, 0.2) 30%, transparent 60%);
+  border-radius: 50%;
+  animation: radiant-pulse 2s ease-in-out infinite 0.5s;
+  z-index: -1;
+}
+@keyframes radiant-pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.8;
+  }
+}
+@keyframes fire-flicker {
+  0% {
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(1.2);
+  }
+}
+@keyframes glow-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 20px rgba(255, 140, 0, 0.8)) drop-shadow(0 0 40px rgba(255, 140, 0, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 30px rgb(255, 140, 0)) drop-shadow(0 0 60px rgba(255, 140, 0, 0.6));
+  }
 }
 .spark-section section .top-content .txt {
   max-width: 584px;
@@ -86,12 +143,22 @@
     position: relative;
     z-index: 1;
   }
-  .spark-section section .top-content .fire {
+  .spark-section section .top-content .fire-wrapper {
     position: absolute;
-    top: -20px;
+    top: -40px;
     left: 120px;
+  }
+  .spark-section section .top-content .fire {
     width: 25.6908855438px;
     height: 40px;
+  }
+  .spark-section section .top-content .fire::before {
+    width: 80px;
+    height: 80px;
+  }
+  .spark-section section .top-content .fire::after {
+    width: 120px;
+    height: 120px;
   }
   .spark-section section .top-content .txt {
     max-width: 584px;
@@ -157,10 +224,15 @@
     position: relative;
     z-index: 1;
   }
-  .spark-section section .top-content .fire {
+  .spark-section section .top-content .fire-wrapper {
     position: absolute;
-    top: -30px;
+    top: -60px;
     left: 120px;
+  }
+  .spark-section section .top-content .fire {
+    position: relative;
+    z-index: 2;
+    animation: fire-flicker 0.15s infinite alternate;
   }
   .spark-section section .top-content .txt {
     max-width: 584px;

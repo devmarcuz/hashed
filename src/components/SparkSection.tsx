@@ -22,7 +22,10 @@ const SparkSection = () => {
             setIsInView(true);
             bottomControls.start({ y: 0, opacity: 1 }).then(() => {
               txtControls.start({ y: 0, opacity: 1 }).then(() => {
-                fireControls.start({ scale: 1, opacity: 1 });
+                fireControls.start({
+                  scale: 1,
+                  opacity: 1,
+                });
               });
             });
           } else {
@@ -83,9 +86,17 @@ const SparkSection = () => {
       <section>
         <div className="top-content">
           <motion.div
-            initial={{ scale: 0, opacity: 0 }}
+            className="fire-wrapper"
+            initial={{
+              scale: 0,
+              opacity: 0,
+            }}
             animate={fireControls}
-            transition={{ duration: 0.4, ease: [0.68, -0.55, 0.265, 1.55] }}
+            transition={{
+              duration: 0.8,
+              ease: [0.34, 1.56, 0.64, 1],
+              opacity: { duration: 0.6 },
+            }}
           >
             <Image
               src="/svgs/fire.svg"

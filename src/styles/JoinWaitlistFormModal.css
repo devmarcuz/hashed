@@ -226,7 +226,7 @@
 }
 .join-waitlist-section section .form-wrapper .form .field .dropdown {
   position: absolute;
-  bottom: calc(100% + 4px);
+  top: calc(100% + 4px);
   left: 0;
   right: 0;
   background: #fefffa;

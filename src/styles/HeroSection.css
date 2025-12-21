@@ -55,13 +55,13 @@
   cursor: pointer;
   transition: 0.2s all ease-in-out;
 }
-.hero-section section .bottom-arts img:nth-child(1):hover {
+.hero-section section .bottom-arts img:nth-child(1):hover, .hero-section section .bottom-arts img:nth-child(1).auto-hover {
   transform: scale(1.2) rotate(10deg);
 }
-.hero-section section .bottom-arts img:nth-child(2):hover {
+.hero-section section .bottom-arts img:nth-child(2):hover, .hero-section section .bottom-arts img:nth-child(2).auto-hover {
   transform: scale(1.2) rotate(-25deg);
 }
-.hero-section section .bottom-arts img:nth-child(3):hover {
+.hero-section section .bottom-arts img:nth-child(3):hover, .hero-section section .bottom-arts img:nth-child(3).auto-hover {
   transform: scale(1.2) rotate(10deg);
 }
 @media (max-width: 575px) {

@@ -8,6 +8,7 @@ import StrokeMoments from "./StrokeMoments";
 const HeroSection = () => {
   const { scrollY } = useScroll();
   const [hasAnimated, setHasAnimated] = useState(false);
+  const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const scrollY_bottomArts = useTransform(scrollY, [0, 400], [0, 60]);
@@ -45,6 +46,25 @@ const HeroSection = () => {
       setHasAnimated(true);
     }, 2000);
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const delays = [1000, 1800, 2600];
+    const timers: NodeJS.Timeout[] = [];
+
+    delays.forEach((delay, index) => {
+      const startTimer = setTimeout(() => {
+        setActiveImageIndex(index);
+      }, delay);
+
+      const endTimer = setTimeout(() => {
+        setActiveImageIndex(null);
+      }, delay + 800);
+
+      timers.push(startTimer, endTimer);
+    });
+
+    return () => timers.forEach(clearTimeout);
   }, []);
 
   return (
@@ -114,6 +134,7 @@ const HeroSection = () => {
             fetchPriority="high"
             quality={100}
             unoptimized
+            className={activeImageIndex === 0 ? "auto-hover" : ""}
           />
           <Image
             src="/svgs/art-2.svg"
@@ -124,6 +145,7 @@ const HeroSection = () => {
             fetchPriority="high"
             quality={100}
             unoptimized
+            className={activeImageIndex === 1 ? "auto-hover" : ""}
           />
           <Image
             src="/svgs/art-3.svg"
@@ -134,6 +156,7 @@ const HeroSection = () => {
             fetchPriority="high"
             quality={100}
             unoptimized
+            className={activeImageIndex === 2 ? "auto-hover" : ""}
           />
         </motion.div>
       </section>

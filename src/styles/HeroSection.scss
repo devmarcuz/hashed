@@ -59,15 +59,18 @@
         cursor: pointer;
         transition: 0.2s all ease-in-out;
 
-        &:nth-child(1):hover {
+        &:nth-child(1):hover,
+        &:nth-child(1).auto-hover {
           transform: scale(1.2) rotate(10deg);
         }
 
-        &:nth-child(2):hover {
+        &:nth-child(2):hover,
+        &:nth-child(2).auto-hover {
           transform: scale(1.2) rotate(-25deg);
         }
 
-        &:nth-child(3):hover {
+        &:nth-child(3):hover,
+        &:nth-child(3).auto-hover {
           transform: scale(1.2) rotate(10deg);
         }
       }
