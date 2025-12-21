@@ -104,7 +104,6 @@ export default function Home() {
     const checkCurrentSection = () => {
       const headerHeight = 100;
 
-      // Check scrollable sections first (they overlay the fixed hero)
       const scrollableSections = [
         { ref: mainRef, name: "main" },
         { ref: sparkRef, name: "spark" },
@@ -112,13 +111,11 @@ export default function Home() {
         { ref: footerRef, name: "footer" },
       ];
 
-      // Check if any scrollable section is behind the header
       for (let i = 0; i < scrollableSections.length; i++) {
         const section = scrollableSections[i];
         if (section.ref.current) {
           const rect = section.ref.current.getBoundingClientRect();
 
-          // If this section's top is above or at the header position, it's covering the hero
           if (rect.top <= headerHeight && rect.bottom > headerHeight) {
             setCurrentSection(section.name);
             return;
@@ -126,7 +123,6 @@ export default function Home() {
         }
       }
 
-      // If no scrollable section is behind the header, we're showing the hero
       setCurrentSection("hero");
     };
 

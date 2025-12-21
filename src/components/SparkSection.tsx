@@ -12,7 +12,6 @@ const SparkSection = () => {
   const txtControls = useAnimation();
   const fireControls = useAnimation();
 
-  // Animation trigger
   useEffect(() => {
     if (!sparkSectionRef.current) return;
 
@@ -21,7 +20,6 @@ const SparkSection = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsInView(true);
-            // Sequence the animations
             bottomControls.start({ y: 0, opacity: 1 }).then(() => {
               txtControls.start({ y: 0, opacity: 1 }).then(() => {
                 fireControls.start({ scale: 1, opacity: 1 });
@@ -29,7 +27,6 @@ const SparkSection = () => {
             });
           } else {
             setIsInView(false);
-            // Reverse animations
             fireControls.start({ scale: 0, opacity: 0 });
             txtControls.start({ y: 30, opacity: 0 });
             bottomControls.start({ y: 100, opacity: 0 });
