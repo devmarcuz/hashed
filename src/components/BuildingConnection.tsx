@@ -56,7 +56,9 @@ const BuildingConnection = () => {
                 width={200}
                 height={72}
                 priority
-                loading="eager"
+                fetchPriority="high"
+                quality={100}
+                unoptimized
               />
             </motion.div>
           </div>

@@ -111,7 +111,9 @@ const HeroSection = () => {
             width={274.5553894042969}
             height={200}
             priority
-            loading="eager"
+            fetchPriority="high"
+            quality={100}
+            unoptimized
           />
           <Image
             src="/svgs/art-2.svg"
@@ -119,7 +121,9 @@ const HeroSection = () => {
             width={185.5410614013672}
             height={200}
             priority
-            loading="eager"
+            fetchPriority="high"
+            quality={100}
+            unoptimized
           />
           <Image
             src="/svgs/art-3.svg"
@@ -127,7 +131,9 @@ const HeroSection = () => {
             width={208.0063018798828}
             height={200}
             priority
-            loading="eager"
+            fetchPriority="high"
+            quality={100}
+            unoptimized
           />
         </motion.div>
       </section>

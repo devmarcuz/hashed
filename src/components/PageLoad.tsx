@@ -85,6 +85,9 @@ export default function PageLoad({ onDone }: Props) {
                 width={140}
                 height={62}
                 priority
+                fetchPriority="high"
+                quality={100}
+                unoptimized
               />
             </motion.div>
 
@@ -102,6 +105,9 @@ export default function PageLoad({ onDone }: Props) {
                 width={140}
                 height={62}
                 priority
+                fetchPriority="high"
+                quality={100}
+                unoptimized
               />
             </motion.div>
           </motion.div>

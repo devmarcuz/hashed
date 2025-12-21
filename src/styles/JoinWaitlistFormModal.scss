@@ -3,7 +3,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 100dvh;
   width: 100%;
   z-index: 9999999999;
   display: flex;
@@ -313,7 +313,7 @@
       section {
         display: flex;
         align-items: flex-start;
-        gap: 16px;
+        gap: 10px;
         flex-direction: column-reverse;
         padding: 0 16px;
         padding-bottom: 20px;
@@ -608,6 +608,11 @@
 
         .close-btn {
           cursor: pointer;
+
+          svg {
+            width: 34px;
+            height: 44px;
+          }
         }
       }
     }

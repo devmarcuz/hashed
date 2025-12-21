@@ -79,7 +79,9 @@ const Header = ({ currentSection }: HeaderProps) => {
                   width={126}
                   height={56}
                   priority
-                  loading="eager"
+                  fetchPriority="high"
+                  quality={100}
+                  unoptimized
                 />
               </motion.div>
             </AnimatePresence>

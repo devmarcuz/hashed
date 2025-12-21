@@ -62,7 +62,9 @@ const SparkSection = () => {
             height={313}
             className="tree-house-img"
             priority
-            loading="eager"
+            fetchPriority="high"
+            quality={100}
+            unoptimized
           />
 
           <Image
@@ -72,7 +74,9 @@ const SparkSection = () => {
             height={104}
             className="heart-img"
             priority
-            loading="eager"
+            fetchPriority="high"
+            quality={100}
+            unoptimized
           />
         </div>
       </motion.div>

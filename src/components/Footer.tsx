@@ -72,7 +72,9 @@ const Footer = () => {
               width={331.6358947753906}
               height={448}
               priority
-              loading="eager"
+              fetchPriority="high"
+              quality={100}
+              unoptimized
             />
           </motion.div>
 

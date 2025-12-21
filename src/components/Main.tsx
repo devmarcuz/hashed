@@ -174,7 +174,9 @@ const MainSection = () => {
               height={487.6204833984375}
               className="people-img"
               priority
-              loading="eager"
+              fetchPriority="high"
+              quality={100}
+              unoptimized
             />
           </motion.div>
         </div>
@@ -212,7 +214,9 @@ const MainSection = () => {
                     height={405}
                     className="match-img"
                     priority
-                    loading="eager"
+                    fetchPriority="high"
+                    quality={100}
+                    unoptimized
                   />
 
                   <Image
@@ -222,7 +226,9 @@ const MainSection = () => {
                     height={84}
                     className="match-img-txt"
                     priority
-                    loading="eager"
+                    fetchPriority="high"
+                    quality={100}
+                    unoptimized
                   />
                 </motion.div>
               </div>
@@ -260,7 +266,9 @@ const MainSection = () => {
                   height={39.99999618530277}
                   className="road-path"
                   priority
-                  loading="eager"
+                  fetchPriority="high"
+                  quality={100}
+                  unoptimized
                 />
               </motion.div>
 
