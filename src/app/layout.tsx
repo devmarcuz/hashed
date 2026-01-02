@@ -27,13 +27,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Preload critical images - highest priority first */}
-        <link
-          rel="preload"
-          href="/svgs/modal-img.svg"
-          as="image"
-          type="image/svg+xml"
-        />
         <link
           rel="preload"
           href="/svgs/logo-frame-1.svg"
@@ -84,12 +77,6 @@ export default function RootLayout({
         />
         <link
           rel="preload"
-          href="/svgs/findamatch.svg"
-          as="image"
-          type="image/svg+xml"
-        />
-        <link
-          rel="preload"
           href="/svgs/findamatchtxt.svg"
           as="image"
           type="image/svg+xml"
@@ -109,18 +96,6 @@ export default function RootLayout({
         <link
           rel="preload"
           href="/svgs/heart_pin.svg"
-          as="image"
-          type="image/svg+xml"
-        />
-        <link
-          rel="preload"
-          href="/svgs/build.svg"
-          as="image"
-          type="image/svg+xml"
-        />
-        <link
-          rel="preload"
-          href="/svgs/hugs.svg"
           as="image"
           type="image/svg+xml"
         />

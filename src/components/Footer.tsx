@@ -67,7 +67,7 @@ const Footer = () => {
             }}
           >
             <Image
-              src="/svgs/hugs.svg"
+              src="/images/hugs.png"
               alt=""
               width={331.6358947753906}
               height={448}

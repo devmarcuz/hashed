@@ -245,7 +245,7 @@ const JoinWaitlistFormModal = () => {
               <form className="form-wrapper" onSubmit={handleSubmit}>
                 <div className="img-container">
                   <Image
-                    src="/svgs/modal-img.svg"
+                    src="/images/modal-img.png"
                     alt=""
                     width={376}
                     height={184}

@@ -4,7 +4,7 @@ import "@/styles/NoiseEffect.css";
 const NoiseEffect = () => {
   return (
     <Image
-      src="/svgs/noise.svg"
+      src="/images/noise.png"
       className="noise"
       alt=""
       width={1512}

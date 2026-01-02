@@ -208,7 +208,7 @@ const MainSection = () => {
                   }}
                 >
                   <Image
-                    src="/svgs/findamatch.svg"
+                    src="/images/findamatch.png"
                     alt="people vibe"
                     width={225}
                     height={405}
