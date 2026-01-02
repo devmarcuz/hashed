@@ -250,7 +250,8 @@ const JoinWaitlistFormModal = () => {
                     width={376}
                     height={184}
                     priority
-                    loading="eager"
+                    quality={100}
+                    unoptimized // For SVGs, this prevents Next.js optimization that can cause delays
                   />
                 </div>
 

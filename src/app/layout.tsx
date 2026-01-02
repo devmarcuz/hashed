@@ -5,11 +5,13 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap", // Prevents FOIT (Flash of Invisible Text)
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -25,7 +27,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Preload critical images */}
+        {/* Preload critical images - highest priority first */}
+        <link
+          rel="preload"
+          href="/svgs/modal-img.svg"
+          as="image"
+          type="image/svg+xml"
+        />
         <link
           rel="preload"
           href="/svgs/logo-frame-1.svg"
