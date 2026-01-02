@@ -91,19 +91,22 @@ const JoinWaitlistFormModal = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://app.amiyoo.com/api/waitlist", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-API-Key": process.env.NEXT_PUBLIC_AMIYOO_API_KEY || "",
-        },
-        body: JSON.stringify({
-          first_name: firstName,
-          email: email,
-          age_range: selectedAge.replace(/\s/g, ""),
-          country: selectedCountry.name,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_AMIYOO_API_ENDPOINT}/waitlist`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-API-Key": process.env.NEXT_PUBLIC_AMIYOO_API_KEY || "",
+          },
+          body: JSON.stringify({
+            first_name: firstName,
+            email: email,
+            age_range: selectedAge.replace(/\s/g, ""),
+            country: selectedCountry.name,
+          }),
+        }
+      );
 
       const data = await response.json();
 
