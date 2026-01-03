@@ -168,7 +168,7 @@ const MainSection = () => {
             }}
           >
             <Image
-              src="/svgs/peoplevibe.svg"
+              src="/images/peoplevibe.png"
               alt="people vibe"
               width={566.499267578125}
               height={487.6204833984375}
